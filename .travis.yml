@@ -7,27 +7,27 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - gcc-7
-      - g++-7
-      
+      - gcc-9
+      - g++-9
+
 
 install:
   # ==== install the newest cmake ====
   # https://riptutorial.com/ja/cmake/example/4723/%E6%9C%80%E6%96%B0%E3%81%AEcmake%E3%81%A7travis-ci%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B
-
+  #  (v3.3 -> v3.18 へ変更)
   # first we create a directory for the CMake binaries
   - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
   - mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
   # we use wget to fetch the cmake binaries
-  - travis_retry wget --no-check-certificate https://cmake.org/files/v3.3/cmake-3.3.2-Linux-x86_64.tar.gz
+  - travis_retry wget --no-check-certificate https://cmake.org/files/v3.18/cmake-3.18.0-rc3-Linux-x86_64.tar.gz
   # this is optional, but useful:
   # do a quick md5 check to ensure that the archive we downloaded did not get compromised
-  - echo "f3546812c11ce7f5d64dc132a566b749 *cmake-3.3.2-Linux-x86_64.tar.gz" > cmake_md5.txt
+  - echo "f3546812c11ce7f5d64dc132a566b749 *cmake-3.18.0-rc3-Linux-x86_64.tar.gz" > cmake_md5.txt
   - md5sum -c cmake_md5.txt
   # extract the binaries; the output here is quite lengthy,
   # so we swallow it to not clutter up the travis console
-  - tar -xvf cmake-3.3.2-Linux-x86_64.tar.gz > /dev/null
-  - mv cmake-3.3.2-Linux-x86_64 cmake-install
+  - tar -xvf cmake-3.18.0-rc3-Linux-x86_64.tar.gz > /dev/null
+  - mv cmake-3.18.0-rc3-Linux-x86_64 cmake-install
   # add both the top-level directory and the bin directory from the archive
   # to the system PATH. By adding it to the front of the path we hide the
   # preinstalled CMake with our own.
@@ -46,10 +46,10 @@ install:
 
 before_script:
   # use new gcc, g++
-  - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
-  - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
-  - export CC=/usr/bin/gcc-7
-  - export CXX=/usr/bin/g++-7
+  - sudo ln -s /usr/bin/gcc-9 /usr/local/bin/gcc
+  - sudo ln -s /usr/bin/g++-9 /usr/local/bin/g++
+  - export CC=/usr/bin/gcc-9
+  - export CXX=/usr/bin/g++-9
   - gcc -v && g++ -v && cmake --version && ctest --version
 
 script:
