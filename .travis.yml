@@ -15,6 +15,7 @@ before_script:
   # use new gcc, g++
   - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
   - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
+  - gcc -v && g++ -v && cmake --version
   # install gtest
   - sudo apt-get install libgtest-dev
   - cd /usr/src/gtest
@@ -22,5 +23,6 @@ before_script:
   - cd -
 
 script:
+  - mkdir build
   - cd build && cmake .. && make
   - ctest -V
