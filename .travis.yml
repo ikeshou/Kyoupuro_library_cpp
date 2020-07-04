@@ -1,9 +1,26 @@
 language: cpp
 compiler:
-  - g++
+  - gcc
+os: linux
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-7
+      - g++-7
+      - cmake
+
 before_script:
+  # use new gcc, g++
+  - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
+  - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
+  # install gtest
   - sudo apt-get install libgtest-dev
-  - cd /usr/src/gtest && sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/ && cd -
+  - cd /usr/src/gtest
+  - sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/
+  - cd -
+
 script:
   - cd build && cmake .. && make
   - ctest -V
