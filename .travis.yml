@@ -9,6 +9,7 @@ addons:
     packages:
       - gcc-7
       - g++-7
+      - ctest
 
 install:
   # ==== install the newest cmake ====
@@ -34,10 +35,13 @@ install:
   # don't forget to switch back to the main build directory once you are done
   - cd ${TRAVIS_BUILD_DIR}
 
-  # install gtest
+  # ==== install gtest ====
   - sudo apt-get install libgtest-dev
   - cd /usr/src/gtest
-  - sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/
+  # sudo 時にもとの環境変数 PATH を引き継ぐ必要がある (これをしないと cmake not found と怒られる)
+  - sudo env "PATH=$PATH" cmake .
+  - sudo env "PATH=$PATH" cmake --build .
+  - sudo mv libg* /usr/local/lib/
   - cd ${TRAVIS_BUILD_DIR}
 
 before_script:
@@ -46,7 +50,7 @@ before_script:
   - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
   - export CC=/usr/bin/gcc-7
   - export CXX=/usr/bin/g++-7
-  - gcc -v && g++ -v && cmake --version
+  - gcc -v && g++ -v && cmake --version && ctest --version
 
 script:
   - mkdir build
