@@ -11,9 +11,6 @@ TEST(test_pascal, comb_method) {
     for (i32 i = 0; i <= 15; ++i) {
         for (i32 j = 0; j <= i; ++j) {
             i64 expected = (factorial[i] / factorial[j]) / factorial[i-j];
-            debug(i);
-            debug(j);
-            debug(expected);
             EXPECT_EQ(expected, p.comb(i, j));
         }
     }
