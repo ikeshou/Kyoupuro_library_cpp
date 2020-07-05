@@ -37,13 +37,12 @@ TEST(test_eratos, is_prime_method) {
     VI p_list = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
     Eratos e(50);
     for (i32 i = 1; i <= 50; ++i) {
-        cout << i << endl;
         EXPECT_EQ(find(p_list.begin(), p_list.end(), i) != p_list.end(), e.is_prime(i));
     }
 }
 
 
-TEST(test_eratos, prime_factorize) {
+TEST(test_eratos, prime_factorize_method) {
     VI p_list = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
     Eratos e(50);
     for (i32 i = 1; i < 51 * 51; ++i) {

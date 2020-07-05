@@ -85,7 +85,7 @@ unordered_map<i64, i64> Eratos::prime_factorize(i64 num) {
             factorized_dict[i] = cnt;
         }
     }
-    // 最後は 1 or √num より大きい素数
+    // 最後は 1 or √n より大きい素数
     if (num != 1) factorized_dict[num] = 1;
     return factorized_dict;
 }
