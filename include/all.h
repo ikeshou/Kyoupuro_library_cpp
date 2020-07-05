@@ -11,3 +11,7 @@ using VB  = vector<bool>;   using VS  = vector<string>;
 using VI  = vector<i32>;    using VL  = vector<i64>;    using VF  = vector<f32>;    using VD  = vector<f64>;
 using VVI = vector<VI>;     using VVL = vector<VL>;     using VVF = vector<VF>;     using VVD = vector<VD>;
 using VPI = vector<PII>;    using VPL = vector<PLL>;    using VPF = vector<PFF>;    using VPD = vector<PDD>;
+
+/* debug */
+#define debug(x)      cerr << #x << ": " << (x) << '\n'
+#define debugvec(v)   for (size_t _ = 0; _ < (v).size(); ++_) {cerr << #v << '[' << _ << "]: " << (v)[_] << '\n';}
