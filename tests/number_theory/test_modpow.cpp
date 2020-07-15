@@ -4,6 +4,10 @@
 #include "others/randint.h"
 
 
+/**
+ * Iteration 回 a, r をランダム生成して繰り返し二乗法で計算。
+ * ナイーブに累乗 and 剰余計算をして求めた計算結果と比較するテストを行う。
+ */
 TEST(test_modpow, random_case) {
     i32 Iteration = 1000;
     i64 mod = 1000000007;

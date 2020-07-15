@@ -4,6 +4,9 @@
 #include "others/randint.h"
 
 
+/**
+ * Iteration 回 1 <= num <= 1000 なる整数を選択し、is_prime の結果とナイーブに素数判定を行った結果を比較するテストを行う。
+ */
 TEST(test_is_prime, random_case) {
     i32 Iteration = 100;
     for (i32 i = 0; i < Iteration; ++i) {
@@ -20,6 +23,9 @@ TEST(test_is_prime, random_case) {
 }
 
 
+/**
+ * Iteration 回 1 <= num <= 1000 なる整数を選択し、enum_divisor の結果とナイーブに列挙した結果を比較するテストを行う。
+ */
 TEST(test_enum_divisor, random_case) {
     i32 Iteration = 100;
     for (i32 i = 0; i < Iteration; ++i) {
@@ -33,6 +39,9 @@ TEST(test_enum_divisor, random_case) {
 }
 
 
+/**
+ * 50 以下の数について素数判定が正しく動くかチェックする。
+ */
 TEST(test_eratos, is_prime_method) {
     VI p_list = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
     Eratos e(50);
@@ -42,6 +51,9 @@ TEST(test_eratos, is_prime_method) {
 }
 
 
+/**
+ * 50 以下の数について素因数分解が正しく動くかチェックする。
+ */
 TEST(test_eratos, prime_factorize_method) {
     VI p_list = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47};
     Eratos e(50);
